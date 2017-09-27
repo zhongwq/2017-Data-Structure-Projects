@@ -2,13 +2,14 @@
 //  main.cpp
 //  TrainChanger
 //
-//  Created by zhongwq on 2017/9/21.
+//  Created by zhongwq，zhouwb on 2017/9/21.
 //  Copyright © 2017年 zhongwq. All rights reserved.
 //
 
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <limits>
 using namespace std;
 
 vector<stack<int>> temp_stack;
@@ -101,15 +102,48 @@ void distribute() {
     }
 }
 
+
+
 void run(){
-    cout << "How many number do you want to input?" << endl;
-    cin >> n;
-    cout << "Input your number:";
-    for (int i = 0; i < n; i++) {
-        cin >> input[i];
-    }
-    distribute();
+	int status = 0;
+	cout << "How many numbers do you want to input?" << endl;
+	cin >> n;
+	while (cin.fail() || n <= 0) {
+		cin.clear();
+		cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+		cout << "The numbers can't be a negative number and letters!" << endl;
+		cout << "Please input again:";
+		cin >> n;
+	}
+	while (1) {
+		if (status == 1)
+			cout << "Some of your input is letter!Please enter again." << endl;
+		if (status == 2)
+			cout << "Some of your input is overflow! Please check your input and enter again." << endl;
+		cout << "Input your numbers(Please enter space between each number):";
+		for (int i = 0; i < n; i++) {
+			cin >> input[i];
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+				status = 1;
+				break;
+			} else if (input[i] > n || input[i] <= 0) {
+				status = 2;
+				cin.clear();
+				cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+				break;
+			}
+			if (i == n - 1) {
+				status = 0;
+			}
+		}
+		if (status == 0)
+			break;
+	}
+	distribute();
 };
+
 
 int main() {
     run();
