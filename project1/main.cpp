@@ -10,6 +10,7 @@
 #include <stack>
 #include <vector>
 #include <limits>
+#include <iomanip>
 using namespace std;
 
 vector<stack<int>> temp_stack;
@@ -117,10 +118,10 @@ void run(){
 	}
 	while (1) {
 		if (status == 1)
-			cout << "Some of your input is letter!Please enter again." << endl;
+			cout << "Some of your input is letter!" << endl;
 		if (status == 2)
-			cout << "Some of your input is overflow! Please check your input and enter again." << endl;
-		cout << "Input your numbers(Please enter space between each number):";
+			cout << "Some of your input is overflow!" << endl;
+		cout << "Input your numbers(Please enter space between each number):" << endl;
 		for (int i = 0; i < n; i++) {
 			cin >> input[i];
 			if (cin.fail()) {
@@ -144,8 +145,37 @@ void run(){
 	distribute();
 };
 
+void UI() {
+	vector<stack<int>> new_stack;
+	temp_stack = new_stack;
+	vector<int> new_output;
+	output = new_output;
+	step = 0;
+	system("cls");
+	cout << "----------------------------------------------------------------------" << endl
+		 << "Welcome to our Project One!" << endl
+		 << "s - start a new test" << endl
+		 << "e - exit" << endl
+		 << "----------------------------------------------------------------------" << endl
+		 << "Please input your choice: ";
+	string command;
+	cin >> command;
+	if(command == "s"){
+		system("cls");
+		run();
+		system("pause");
+		UI();
+	}
+	else if(command == "e")
+		system("pause");
+	else{
+		cout << "Please input s or e!" << endl;
+		system("pause");
+		UI();
+	}
+}
 
 int main() {
-    run();
+    UI();
     return 0;
 }
