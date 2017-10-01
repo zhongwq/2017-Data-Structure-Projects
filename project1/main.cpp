@@ -101,7 +101,7 @@ void distribute() {
             }
         }
     }
-    cout << "It used " << temp_stack.size() << " stack(s) to distribute the trains." << endl;
+    cout << "It used " << temp_stack.size() << " stack(s) and " << step-1 << " step(s) to distribute the trains." << endl;
     system("pause");
 }
 
@@ -152,7 +152,7 @@ void UI() {
 	temp_stack = new_stack;
 	vector<int> new_output;
 	output = new_output;
-	step = 0;
+	step = 1;
 	system("cls");
 	cout << "----------------------------------------------------------------------" << endl
 		 << "Welcome to our Project One!" << endl
