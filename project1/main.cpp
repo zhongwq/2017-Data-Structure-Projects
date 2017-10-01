@@ -27,7 +27,7 @@ void printStep(){
     }
     cout << endl;
     for (int i = 0; i < temp_stack.size(); i++) {
-        cout << "Stack" << i+1 << ": ";
+        cout << "Stack_" << i+1 << ": ";
         if (temp_stack[i].empty()){
             cout << "empty" << endl;
             continue;
@@ -101,6 +101,8 @@ void distribute() {
             }
         }
     }
+    cout << "It used " << temp_stack.size() << " stack(s) to distribute the trains." << endl;
+    system("pause");
 }
 
 
@@ -165,10 +167,9 @@ void UI() {
 		run();
 		system("pause");
 		UI();
-	}
-	else if(command == "e")
+	} else if(command == "e")
 		system("pause");
-	else{
+	else {
 		cout << "Please input s or e!" << endl;
 		system("pause");
 		UI();
