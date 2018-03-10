@@ -29,6 +29,6 @@ public:
     int size() const;
 };
 
-#include "../src/Extended_queue.cpp"
+#include "Extended_queue.cpp"
 
 #endif /* Extended_queue_hpp */

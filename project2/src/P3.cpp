@@ -14,7 +14,7 @@ using namespace std;
 
 void initialize(int &end_time, int &queue_limit, double &arrival_rate,
                 double &departure_rate);
-void run_idle(int time);
+void run_idle(string runway, int time);
 
 int main() {
     int end_time;
@@ -23,45 +23,72 @@ int main() {
     double arrival_rate, departure_rate;
     initialize(end_time, queue_limit, arrival_rate, departure_rate);
     Random variable(false);
-    Runway small_airport(queue_limit);
+    Runway takeoff_runway(queue_limit);
+    Runway landing_runway(queue_limit);
     for (int current_time = 0; current_time < end_time; current_time++) {
         int number_arrivals = variable.poisson(arrival_rate);
-        cout << "number_arrivals: " << number_arrivals << endl;
         for (int i = 0; i < number_arrivals; i++) {
             Plane current_plane(flight_number++, current_time, arriving);
-            if (small_airport.can_land(current_plane) != success)
-                current_plane.refuse();
+            if (takeoff_runway.landingQueue_empty() && takeoff_runway.takingoffQueue_empty())
+                takeoff_runway.can_land(current_plane);
+            else if (arrivals.can_land(current_plane) != success)
+                if (takeoff_runway.can_land(current_plane) != success)
+                    current_plane.refuse;
         }
         
         int number_departures = variable.poisson(departure_rate);
-        cout << "number_departures: " << number_departures << endl;
         for (int j = 0; j < number_departures; j++) {
             Plane current_plane(flight_number++, current_time, departing);
-            if (small_airport.can_depart(current_plane) != success)
+            if (landing_runway.landingQueue_empty() && landing_runway.takingoffQueue_empty())
+                landing_runway.can_depart(current_plane);
+            else if (takeoff_runway.can_depart(current_plane) != success)
                 current_plane.refuse();
         }
         
+        cout << "On the Takeoff_runway: " << endl;
         Plane moving_plane;
-        switch (small_airport.activity(current_time, moving_plane)) {
+        switch (takeoff_runway.activity(current_time, moving_plane)) {
             case land:
+                cout << "On the takeoff runway for buffer: "
                 moving_plane.land(current_time);
                 break;
             case takeoff:
                 moving_plane.fly(current_time);
                 break;
             case idle:
-                run_idle(current_time);
+                run_idle("Takingoff runway", current_time);
+        }
+
+        cout << "On the Landing_runway: " << endl;
+        Plane moving_plane_2;
+        switch (takeoff_runway.activity(current_time, moving_plane_2)) {
+            case land:
+                moving_plane_2.land(current_time);
+                break;
+            case takeoff:
+                cout << "On the landing runway for buffer: "
+                moving_plane_2.fly(current_time);
+                break;
+            case idle:
+                run_idle("Landing Runway", current_time);
         }
     }
     
     ofstream of("./data/summary.txt", std::ios_base::app);
-    of << "Problem 1 : " << endl;
+    of << "P3 : " << endl;
     of << "Limit number :\t" << queue_limit << endl
     << "End time :\t" << end_time << endl
     << "Arrival rate :\t" << arrival_rate << endl
     << "Departure rate :\t" << departure_rate << endl;
+    of << endl << "Landing runway:" << endl;
     of.close();
-    small_airport.shut_down(end_time);
+    cout << endl << "Landing runway:" << endl;
+    landing_runway.shut_down(end_time);
+    of.open("./data/summary.txt", std::ios_base::app);
+    of << endl << "Takeoff runway:" << endl;
+    of.close();
+    cout << endl << "Takeoff runway:" << endl;
+    takeoff_runway.shut_down(end_time);
 }
 
 void initialize(int &end_time, int &queue_limit, double &arrival_rate,
@@ -94,5 +121,5 @@ void initialize(int &end_time, int &queue_limit, double &arrival_rate,
     } while (!acceptable);
 }
 
-void run_idle(int time) { cout << time << ":\tRunway is idle." << endl; }
+void run_idle(string runway, int time) { cout << time << ": " << runway << " is idle." << endl; }
 

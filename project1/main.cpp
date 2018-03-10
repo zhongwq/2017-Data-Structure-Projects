@@ -1,9 +1,9 @@
 //
 //  main.cpp
-//  TrainChanger
+//  TrainDistributingSystem
 //
-//  Created by zhongwq，zhouwb on 2017/9/21.
-//  Copyright © 2017年 zhongwq. All rights reserved.
+//  Created by zhongwq on 2017/9/21.
+//  Copyright © 2017年 zhongwq, zhouwb, zhouzh. All rights reserved.
 //
 
 #include <iostream>
@@ -15,12 +15,17 @@ using namespace std;
 
 vector<stack<int>> temp_stack;
 vector<int> output;
-int n, input[20], step = 1;
+int n, input[20], step, now;
 
 void printStep(){
     cout << endl;
     cout << "------------------------------------------------" << endl;
     cout << "It's the " << step++ << " step: " << endl;
+    cout << "In Train: ";
+    for (int i = now; i < n; i++) {
+        cout << input[i] << " ";
+    }
+    cout << endl;
     cout << "Out Train: ";
     for (auto num: output) {
         cout << num << " ";
@@ -67,9 +72,11 @@ bool searchValid(int& output_rear) {
 
 void distribute() {
     int output_rear = 1;
+    now = 0;
     for (int i = 0; i < n; i++) {
         if (input[i] == output_rear) {
             output.push_back(input[i]);
+            ++now;
             ++output_rear;
             printStep();
             while(searchValid(output_rear)) {
@@ -94,11 +101,12 @@ void distribute() {
                 new_stack.push(input[i]);
                 temp_stack.push_back(new_stack);
             }
+            now++;
             printStep();
         }
-        if (i == n && output_rear != input[n-1]) {
-            while(searchValid(output_rear)) {
-            }
+    }
+    if (now == n && output_rear != input[n-1]) {
+        while(searchValid(output_rear)) {
         }
     }
     cout << "It used " << temp_stack.size() << " stack(s) and " << step-1 << " step(s) to distribute the trains." << endl;

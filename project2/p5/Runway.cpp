@@ -110,39 +110,6 @@ void Runway::shut_down(int time) const {
         << ((float)num_takeoff_requests) / ((float)time) << " per time unit"
         << endl
         << endl;
-        cout << "Sumualation has conluded after " << time << " time units." << endl
-        << "Total number of planes processed \t\t\t"
-        << (num_land_requests + num_takeoff_requests) << endl
-        << "Total number of planes asking to land \t\t" << (num_land_requests)
-        << endl
-        << "Total number of planes asking to take off \t\t"
-        << (num_takeoff_requests) << endl
-        << "Total number of planes accepted for landing \t\t"
-        << (num_land_accepted) << endl
-        << "Total number of planes accepted for takeoff \t\t"
-        << (num_takeoff_accepted) << endl
-        << "Total number of planes refused for landing \t\t" << (num_land_refused)
-        << endl
-        << "Total number of planes refused for takeoff\t\t"
-        << (num_takeoff_refused) << endl
-        << "Total number of planes that landed\t\t\t" << (num_landings) << endl
-        << "Total number of planes that took off\t\t\t" << (num_takeoffs) << endl
-        << "Total number of planes that left in landing queue\t" << landing.size()
-        << endl
-        << "Total number of planes that left in takeoff queue \t"
-        << takeoffing.size() << endl;
-        cout << "Percentage of time runway idle \t\t\t"
-        << 100.0 * (((float)idle_time) / ((float)time)) << "% " << endl;
-        cout << "Average wait in landing queue \t\t\t\t"
-        << ((float)land_wait) / ((float)num_landings) << " time units" << endl;
-        cout << "Average wait in takeoff queue \t\t\t\t"
-        << ((float)takeoff_wait) / ((float)num_takeoffs) << " time units" << endl;
-        cout << "Average obserbed rate of planes wanting to land \t"
-        << ((float)num_land_requests) / ((float)time) << " per time unit" << endl;
-        cout << "Average obserbed rate of planes wanting to take off \t"
-        << ((float)num_takeoff_requests) / ((float)time) << " per time unit"
-        << endl
-        << endl;
         s.close();
         std::cout << "Write down to the data file successfully" << std::endl;
     }

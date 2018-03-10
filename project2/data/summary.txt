@@ -1,0 +1,41 @@
+P2 : 
+Limit number :	5
+End time :	1000
+Arrival rate :	0.48
+Departure rate :	0.48
+Sumualation has conluded after 1000 time units.
+Total number of planes processed 			469
+Total number of planes asking to land 		469
+Total number of planes asking to take off 		0
+Total number of planes accepted for landing 		5
+Total number of planes accepted for takeoff 		0
+Total number of planes refused for landing 		464
+Total number of planes refused for takeoff		0
+Total number of planes that landed			0
+Total number of planes that took off			0
+Total number of planes that left in landing queue	5
+Total number of planes that left in takeoff queue 	0
+Percentage of time runway idle 			0% 
+Average wait in landing queue 				nan time units
+Average wait in takeoff queue 				nan time units
+Average obserbed rate of planes wanting to land 	0.469 per time unit
+Average obserbed rate of planes wanting to take off 	0 per time unit
+
+Sumualation has conluded after 1000 time units.
+Total number of planes processed 			473
+Total number of planes asking to land 		0
+Total number of planes asking to take off 		473
+Total number of planes accepted for landing 		0
+Total number of planes accepted for takeoff 		473
+Total number of planes refused for landing 		0
+Total number of planes refused for takeoff		0
+Total number of planes that landed			0
+Total number of planes that took off			473
+Total number of planes that left in landing queue	0
+Total number of planes that left in takeoff queue 	0
+Percentage of time runway idle 			152.7% 
+Average wait in landing queue 				nan time units
+Average wait in takeoff queue 				0.038055 time units
+Average obserbed rate of planes wanting to land 	0 per time unit
+Average obserbed rate of planes wanting to take off 	0.473 per time unit
+

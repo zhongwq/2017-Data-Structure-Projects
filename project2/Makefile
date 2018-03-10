@@ -8,11 +8,23 @@ INC_DIR := include
 BIN_DIR := bin
 
 P1 := $(BIN_DIR)/P1
+P2 := $(BIN_DIR)/P2
+P3 := $(BIN_DIR)/P3
 
-all: $(P1)
+all: $(P1) $(P2) $(P3)
 
 
-$(P1) : $(BUILD_DIR)/main1.o $(BUILD_DIR)/Plane.o $(BUILD_DIR)/Runway.o $(BUILD_DIR)/Random.o
+$(P1) : $(BUILD_DIR)/P1.o $(BUILD_DIR)/Plane.o $(BUILD_DIR)/Runway.o $(BUILD_DIR)/Random.o
+	@mkdir -p data
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(FLAGS) $^ -o $@
+
+$(P2) : $(BUILD_DIR)/P2.o $(BUILD_DIR)/Plane.o $(BUILD_DIR)/Runway.o $(BUILD_DIR)/Random.o
+	@mkdir -p data
+	@mkdir -p $(BIN_DIR)
+	$(CC) $(FLAGS) $^ -o $@
+
+$(P3) : $(BUILD_DIR)/P3.o $(BUILD_DIR)/Plane.o $(BUILD_DIR)/Runway.o $(BUILD_DIR)/Random.o
 	@mkdir -p data
 	@mkdir -p $(BIN_DIR)
 	$(CC) $(FLAGS) $^ -o $@

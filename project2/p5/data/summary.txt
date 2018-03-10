@@ -1,0 +1,23 @@
+Problem 5 : 
+Limit number :	5
+End time :	1000
+Arrival rate :	0.48
+Departure rate :	0.48
+Sumualation has conluded after 1000 time units.
+Total number of planes processed 			894
+Total number of planes asking to land 		404
+Total number of planes asking to take off 		490
+Total number of planes accepted for landing 		5
+Total number of planes accepted for takeoff 		7
+Total number of planes refused for landing 		399
+Total number of planes refused for takeoff		483
+Total number of planes that landed			0
+Total number of planes that took off			2
+Total number of planes that left in landing queue	5
+Total number of planes that left in takeoff queue 	5
+Percentage of time runway idle 			0.1% 
+Average wait in landing queue 				nan time units
+Average wait in takeoff queue 				0 time units
+Average obserbed rate of planes wanting to land 	0.404 per time unit
+Average obserbed rate of planes wanting to take off 	0.49 per time unit
+
