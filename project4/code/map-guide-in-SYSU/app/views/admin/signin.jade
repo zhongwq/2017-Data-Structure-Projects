@@ -1,0 +1,27 @@
+extends layout
+
+append css
+  link(rel="stylesheet", href="/css/client.css")
+
+append js
+  script(type="text/javascript", src="/js/client.js")
+
+block content
+  .content
+    .logo
+    h1 Sign In
+    .errors!= error
+    form.page-content(method='post')
+      .username
+        label(for='username') Username
+        input#username(name='username', required='true')
+      .password
+        label(for='password') Password
+        input#password(type='password', name='password', required='true')
+      .buttons
+        input#submit.button(type='submit', value='Submit')
+        input#reset.button(type='reset', value='Reset')
+    p.hint
+      | Don't have a account?
+      a(href='/admin/signup')
+        | click here to sign up

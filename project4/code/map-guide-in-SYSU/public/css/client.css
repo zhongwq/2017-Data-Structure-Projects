@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
+body {
+  padding: 40px 0 40px 0;
+  font-size: 14px;
+  background-color: #f5f5f5;
+}
+
+.content {
+  width: 300px;
+  margin: auto;
+}
+
+.logo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  margin: auto;
+  background: url("/img/Logo.jpeg") no-repeat center;
+  background-size: contain;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.page-content {
+  margin: auto;
+  padding-top: 15px;
+  background: white;
+  border-radius: 5px;
+  border: 1px solid #d8dee2;
+}
+
+form>div {
+  width: 80%;
+  height: 80px;
+  margin: auto;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+form input {
+  width: 100%;
+  height: 32px;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #d8dee2;
+}
+
+.buttons {
+  height: 100px;
+}
+
+.button {
+  text-align: center;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#submit {
+  background-color: #1B9AF7;
+  border-color: #1B9AF7;
+  color: #fff;
+}
+
+#submit:hover, #submit:focus {
+  background-color: #4cb0f9;
+  border-color: #4cb0f9;
+}
+
+#submit:active {
+  background-color: #2798eb;
+  border-color: #2798eb;
+  color: #0880d7;
+}
+
+#reset {
+  background-color: #FF4351;
+  border-color: #FF4351;
+  color: #fff;
+}
+
+#reset:hover, #reset:focus {
+  background-color: #ff7680;
+  border-color: #ff7680;
+}
+
+#reset:active {
+  background-color: #f64c59;
+  border-color: #f64c59;
+  color: #ff1022;
+}
+
+.error {
+  color: #86181d;
+  background-color: #ffdce0;
+  height: 50px;
+  padding: 5px;
+  font-size: 13px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid rgba(27,31,35,0.15);
+  border-radius: 5px;
+}
+
+.msg {
+  width: 85%;
+  margin-left:10px;
+  text-align: center;
+  float: left;
+}
+
+.close {
+  height: 100%;
+  color: gray;
+  float: right;
+  line-height: 10px;
+  padding-top: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  user-select: none;
+}
+
+.close:hover {
+  color: black;
+  transition: all 0.5s;
+}
+
+.hint {
+  text-align: center;
+}
+
+.info {
+  width: 300px;
+  padding: 10px 0 0 30%;
+}

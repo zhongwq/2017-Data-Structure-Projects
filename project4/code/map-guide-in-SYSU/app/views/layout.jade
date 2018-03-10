@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title= title
+    block css
+      link(href='css/bootstrap.min.css', rel='stylesheet')
+      link(href='css/style.css', rel='stylesheet')
+
+    block js
+      script(type='text/javascript', src='js/echarts.min.js')
+      script(type='text/javascript', src='http://code.jquery.com/jquery-3.2.1.min.js')
+      script(type='text/javascript', src='js/bootstrap.min.js')
+      script(type='text/javascript', src='https://use.fontawesome.com/4a60b65920.js')
+  body
+    block content

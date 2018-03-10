@@ -1,0 +1,105 @@
+extends ../layout
+
+append css
+  link(rel="stylesheet", href="/css/admin.css")
+
+block content
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/admin') Sysu Map Manager
+      if userSession
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='/admin/logout')
+                i.fa.fa-unlock
+                | &nbsp;注销
+
+  .container-fluid
+    .row
+      .col-sm-2.col-md-1.sidebar
+        ul.nav.nav-sidebar
+          li.active
+            a
+              i.fa.fa-bars
+              | &nbsp;工具栏
+              span.sr-only (current)
+          li
+            a#addPlace
+              i.fa.fa-files-o
+              | &nbsp;添加地点
+          li
+            a#addLink
+              i.fa.fa-files-o
+              | &nbsp;添加线路
+      .col-sm-10.col-sm-offset-2.col-md-11.col-md-offset-1.main
+        block main
+  #addPlaceModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='addPlaceModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true')
+            | ×
+          h4#addPlaceModalLabel.title
+            | 地点详情
+        .modal-body
+          #addPlaceError
+          form#addPlaceForm
+            h4 添加地点
+            .form-group
+              label(for="add_place_value") 地点名称
+              input#add_place_value.form-control(type="text", name="value", placeholder="请输入地点名称...", required="true")
+            .form-group
+              label(for="add_introduce") 地点介绍
+              textarea#add_introduce.form-control(type="text", name="introduce", placeholder="请输入地点介绍...", required="true")
+            .form-group
+              label(for="add_x") X坐标
+              input#add_x.form-control(type="number", name="x", placeholder="请输入地点的x坐标...", required="true")
+            .form-group
+              label(for="add_y") Y坐标
+              input#add_y.form-control(type="number", name="y", placeholder="请输入地点的y坐标...", required="true")
+            button.btn.btn-primary 提交
+        .modal-footer
+          button.btn.btn-danger(type='button', data-dismiss='modal')
+            | 关闭
+          button.btn.btn-success(type='button', data-dismiss='modal')
+            | 确认
+  #addLinkModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='addLinkModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true')
+            | ×
+          h4#addLinkModalLabel.title
+            | 添加路线
+        .modal-body
+          #addLinkError
+          #addLinkForm
+            h4 路线添加
+            .form-group
+              label(for="add_source") 起点
+              select#add_source.form-control(name="source")
+            .form-group
+              label(for="add_target") 终点
+              select#add_target.form-control(name="target")
+            .form-group
+              label(for="add_type") 类型
+              select#add_type.form-control(name="type")
+                option(value="0") 人行道
+                option(value="1") 车行道
+            .form-group
+              label(for="add_value") 长度
+              input#add_value.form-control(type="number", name="value", placeholder="请输入该路线的长度...")
+            button#submitLink.btn.btn-primary 提交
+        .modal-footer
+          button.btn.btn-danger(type='button', data-dismiss='modal')
+            | 关闭
+          button.btn.btn-success(type='button', data-dismiss='modal')
+            | 确认
+  block scripts

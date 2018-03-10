@@ -1,0 +1,108 @@
+extends index
+
+append js
+  script(src="/js/ckeditor/ckeditor.js")
+  script(type='text/javascript', src='js/nav.js')
+
+block pageContent
+  .container
+    .row
+      .col-xs-9.col-sm-6.mapContent
+        #main
+        nav(aria-label='...')
+          ul.pager
+            li
+              a#car Car
+            li
+              a#footWay FootWay
+            li
+              a#all All
+      .col-xs-9.col-sm-6
+        #search
+          h4 路径查询小助手
+          .form-group
+            label(for='source') 起始地
+            select#from.form-control
+          .form-group
+            label(for='source') 目的地
+            select#to.form-control
+          button#button.btn.btn-primary(type='button') 确认
+          #show
+      #infoModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='infoModalLabel', aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true')
+                | ×
+              h4#myModalLabel.title
+                | 地点详情
+            .modal-body
+              .name
+                地点名称:&nbsp;
+                span
+              .introduce
+                地点介绍:&nbsp;
+                span
+              .place-meta
+                a#favourite(href='#')
+                  i.fa.fa-thumbs-o-up&nbsp;被赞:
+                  span.favourite
+                a#point(href='#')
+                  i.fa.fa-star&nbsp;评分:
+                  span.point
+              .place-comments
+                h4 地点评论
+                ul.comments
+                form#addComment
+                  h4 添加评论
+                  .form-group
+                    label(for="email") 邮箱
+                    input.form-control(type="email", name="email", placeholder="请输入邮箱...")
+                  .form-group
+                    label(for="content") 内容
+                    textarea.form-control(type="text", name="content", placeholder="请输入内容...")
+                  .form-group
+                    label(for="point") 评分
+                    select.form-control(name="point", placeholder="请选择对该地点的的评分...")
+                      option(value="0") 0
+                      option(value="1") 1
+                      option(value="2") 2
+                      option(value="3") 3
+                      option(value="4") 4
+                      option(value="5") 5
+                  button.btn.btn-primary 提交
+            .modal-footer
+              button.btn.btn-danger(type='button', data-dismiss='modal')
+                | 关闭
+              button.btn.btn-success(type='button', data-dismiss='modal')
+                | 确认
+  #shareLinkModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='shareLinkModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true')
+            | ×
+          h4#addLinkModalLabel.title
+            | 旅途分享
+        .modal-body
+          form#shareLinkForm
+            h4#path
+            hr
+            .form-group
+              label(for="post_email") Email
+              input#post_email.form-control.input-lg(name="email", placeholder="请输入你的邮箱...", required="true")
+            .form-group
+              label(for="post_title") Title
+              input#post_title.form-control.input-lg(name="title", placeholder="请输入你的标题...", required="true")
+            .form-group
+              label(for="post_content") Content
+              textarea#js-post-content.form-control(name="content", required="true")
+            button#submitPost.btn.btn-primary 提交
+        .modal-footer
+          button.btn.btn-danger(type='button', data-dismiss='modal')
+            | 关闭
+          button.btn.btn-success(type='button', data-dismiss='modal')
+            | 确认
+  hr
+  footer
+    p © 2017 Zhongwq, Data Structure Project.

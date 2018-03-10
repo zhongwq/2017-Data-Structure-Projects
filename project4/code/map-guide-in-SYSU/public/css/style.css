@@ -1,0 +1,84 @@
+body {
+  padding: 70px 50px 50px 50px;
+}
+
+::-webkit-scrollbar {display:none}
+
+a {
+  color: #00B7FF;
+}
+
+.mapContent {
+  text-align: center;
+}
+
+#main {
+  width: 600px;
+  height: 600px;
+  margin: auto;
+}
+
+.place-meta a {
+  margin: 5px;
+}
+
+.comments {
+	list-style: none;
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.nav li:not(.active) {
+  cursor: pointer;
+}
+
+table tbody {
+  display:block;
+  height:195px;
+  overflow-y:scroll;
+}
+
+table thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+table thead {
+  width: 100%;
+}
+
+.manage {
+  width: 200px;
+}
+
+.place-list td a {
+  width: 30%;
+  margin: 1%;
+}
+
+.link-list td a {
+  width: 40%;
+  margin: 3%;
+}
+
+.cover {
+  display: grid;
+}
+
+.msg {
+  width: 90%;
+}
+
+#search {
+  margin: 80px auto 80px auto;
+  width: 300px;
+}
+
+#show {
+  margin-top: 50px;
+}
+
+#share {
+  margin-top: 20px;
+}

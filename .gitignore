@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Folders
+node_modules/
+sessions/
